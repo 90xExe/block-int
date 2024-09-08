@@ -1,0 +1,47 @@
+ private void BlockInternetAccess(string HDplayer)
+ {
+     Process.Start("netsh.exe", $"advfirewall firewall add rule name=\"Block {HDplayer}\" dir=out action=block program=\"{HDplayer}\" enable=yes");
+
+     UpdateStatus("INTERNET BLOCK ON !!");
+     Console.Beep(400, 300);
+ }
+
+ private void AllowInternetAccess(string HDplayer)
+ {
+     Process.Start("netsh.exe", $"advfirewall firewall delete rule name=\"Block {HDplayer}\"");
+     UpdateStatus("INTERNET BLOCK OFF !!");
+     Console.Beep(400, 300);
+ }
+
+ private void blkint_CheckedChanged(object sender, EventArgs e)
+ {
+     if (blkint.Checked)
+     {
+
+         string processName1 = "%ProgramFiles%\\BlueStacks_msi5\\HD-Player.exe"; // Replace "YourSoftware1.exe" with the name of your first software
+         string processName2 = "%ProgramFiles%\\BlueStacks_msi2\\HD-Player.exe"; // Replace "YourSoftware2.exe" with the name of your second software
+         string processName3 = "%ProgramFiles%\\BlueStacks_nxt\\HD-Player.exe"; // Replace "YourSoftware2.exe" with the name of your second software
+         string processName4 = "%ProgramFiles%\\BlueStacks\\HD-Player.exe"; // Replace "YourSoftware2.exe" with the name of your second software
+         string processName5 = "%ProgramFiles%\\BlueStacks_msi2\\HD-Player.exe"; // Replace "YourSoftware2.exe" with the name of your second software
+         BlockInternetAccess(processName1);
+         BlockInternetAccess(processName2);
+         BlockInternetAccess(processName3);
+         BlockInternetAccess(processName4);
+         BlockInternetAccess(processName5);
+
+     }
+     else
+     {
+         string processName1 = "%ProgramFiles%\\BlueStacks_msi5\\HD-Player.exe"; // Replace "YourSoftware1.exe" with the name of your first software
+         string processName2 = "%ProgramFiles%\\BlueStacks_msi2\\HD-Player.exe"; // Replace "YourSoftware2.exe" with the name of your second software
+         string processName3 = "%ProgramFiles%\\BlueStacks_nxt\\HD-Player.exe"; // Replace "YourSoftware2.exe" with the name of your second software
+         string processName4 = "%ProgramFiles%\\BlueStacks\\HD-Player.exe"; // Replace "YourSoftware2.exe" with the name of your second software
+         string processName5 = "%ProgramFiles%\\BlueStacks_msi2\\HD-Player.exe"; // Replace "YourSoftware2.exe" with the name of your second software
+         AllowInternetAccess(processName1);
+         AllowInternetAccess(processName2);
+         AllowInternetAccess(processName3);
+         AllowInternetAccess(processName4);
+         AllowInternetAccess(processName5);
+
+     }
+ }
